@@ -27,6 +27,7 @@ pipeline {
           sh '''
             echo 'Deploy to environment'
             sleep 2
+          '''
         }
       }
     }
