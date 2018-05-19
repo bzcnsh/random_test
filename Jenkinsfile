@@ -1,15 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
-            steps {
-                sh './gradlew check'
-            }
-        }
-    }
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
+      stage 'Commit stage' {
+        echo 'Compiling'
+        sleep 2
+
+        echo 'Running unit tests'
+        sleep 2
+      }
+
+      stage 'Test'
+        echo 'Running component tests'
+        sleep 2
+
+      stage 'Deploy' {
+        echo 'Deploy to environment'
+        sleep 2
+      }
     }
 }
