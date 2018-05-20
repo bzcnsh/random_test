@@ -27,6 +27,11 @@ pipeline {
             sleep 1
           '''
         }
+        publishers {
+          buildPipelineTrigger('pp2') {
+          }
+        }
+
       }
 
       stage('Deploy') {
