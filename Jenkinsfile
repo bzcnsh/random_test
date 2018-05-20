@@ -19,9 +19,7 @@ pipeline {
             echo 'Running component tests'
             sleep 2
           '''
-        }
 
-        steps {
           sh '''
             echo 'Running1 component tests'
             sleep 1
