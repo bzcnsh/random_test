@@ -20,9 +20,7 @@ pipeline {
             sleep 2
           '''
         }
-      }
 
-      stage('Test') {
         steps {
           sh '''
             echo 'Running1 component tests'
