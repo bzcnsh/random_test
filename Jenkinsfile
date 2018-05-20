@@ -15,10 +15,12 @@ pipeline {
 
       stage('Test') {
         steps {
-          sh '''
+          shell(
+          '''
             echo 'Running component tests'
             sleep 2
           '''
+          )
 
           sh '''
             echo 'Running1 component tests'
