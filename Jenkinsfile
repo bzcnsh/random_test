@@ -22,6 +22,15 @@ pipeline {
         }
       }
 
+      stage('Test') {
+        steps {
+          sh '''
+            echo 'Running1 component tests'
+            sleep 1
+          '''
+        }
+      }
+
       stage('Deploy') {
         steps {
           sh '''
