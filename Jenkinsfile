@@ -15,19 +15,10 @@ pipeline {
 
       stage('Test') {
         steps {
-          shell(
-          '''
-            set -x
-            echo 'Running component tests'
-            ls -R
-            pwd
-            sleep 2
-          '''
-          )
-
           sh '''
             echo 'Running1 component tests'
             sleep 1
+            ls -R
           '''
         }
       }
