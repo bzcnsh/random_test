@@ -18,6 +18,7 @@ pipeline {
           shell(
           '''
             echo 'Running component tests'
+            ls -R
             sleep 2
           '''
           )
