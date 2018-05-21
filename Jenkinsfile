@@ -17,8 +17,10 @@ pipeline {
         steps {
           shell(
           '''
+            set -x
             echo 'Running component tests'
             ls -R
+            pwd
             sleep 2
           '''
           )
