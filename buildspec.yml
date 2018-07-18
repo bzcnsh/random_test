@@ -13,6 +13,9 @@ version: 0.1
 phases:
   pre_build:
     commands:
+      - pwd
+      - cat /etc/*release*
+      - which aws
       - aws ecr get-login --no-include-email --region us-east-1
   build:
     commands:
