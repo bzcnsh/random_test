@@ -16,6 +16,7 @@ phases:
       - pwd
       - cat /etc/*release*
       - which aws
+      - echo $CODEBUILD_BUILD_ID > build_id.txt
   build:
     commands:
       - docker build -t codebuild01 .
@@ -25,4 +26,6 @@ phases:
       - eval $(aws ecr get-login --no-include-email --region us-east-1)
       - cat ~/.docker/config.json
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
-
+artifacts:
+    files:
+      - build_id.txt
