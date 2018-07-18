@@ -23,6 +23,6 @@ phases:
       - docker tag codebuild01:latest 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
   post_build:
     commands:
-      - ls -laR
+      - ls ~/ -laR
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
 
