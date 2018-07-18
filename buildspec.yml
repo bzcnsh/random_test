@@ -22,7 +22,7 @@ phases:
       - docker tag codebuild01:latest 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
   post_build:
     commands:
-      - aws ecr get-login --no-include-email --region us-east-1
+      - eval $(aws ecr get-login --no-include-email --region us-east-1)
       - cat ~/.docker/config.json
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
 
