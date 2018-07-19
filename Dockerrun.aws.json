@@ -26,6 +26,12 @@
           "containerPath": "/tmp/12",
           "readOnly": true
         }
+      ],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
       ]
     }
   ]
