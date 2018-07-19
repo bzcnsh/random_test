@@ -13,9 +13,8 @@ version: 0.1
 phases:
   pre_build:
     commands:
-      - pwd
       - cat /etc/*release*
-      - which aws
+      - apt-get install zip -y
       - echo $CODEBUILD_BUILD_ID > build_id.txt
   build:
     commands:
@@ -26,8 +25,7 @@ phases:
       - eval $(aws ecr get-login --no-include-email --region us-east-1)
       - cat ~/.docker/config.json
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
+      - zip -r codebuild01.zip build_i1.txt .ebextensions Dockerrun.aws.json
 artifacts:
     files:
-      - build_id.txt
-      - .ebextensions/*
-      - Dockerrun.aws.json
+      - codebuild01.zip
