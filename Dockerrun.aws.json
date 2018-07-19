@@ -33,6 +33,16 @@
           "containerPort": 80
         }
       ]
+    },
+    {
+      "name": "redis",
+      "image": "redis:4.0.9",
+      "portMappings": [
+        {
+          "hostPort": 6379,
+          "containerPort": 6379
+        }
+      ]
     }
   ]
 }
