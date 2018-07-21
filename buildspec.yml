@@ -11,6 +11,11 @@ version: 0.1
 # AWS_ACCOUNT_ID  - Remote AWS account id  (e.g. 555555555555)
 # export PATH=~/.local/bin:$PATH 
 
+# lessons learned here:
+# 1. elastic beanstalk has its own CLI tool-eb, the tool requires its own installation and configuration, before first use
+# 2. codepipeline puts artifacts into a zip file, so if codepipeline has a codebuild stage, which creates a zip file as its artifact, codepipeline will zip the zip file when creating its own artifacts
+# 3. artifact from codepipeline is used to trigger EB deployment, so its content cannot be another zip file
+
 phases:
   pre_build:
     commands:
