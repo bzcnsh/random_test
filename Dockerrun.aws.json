@@ -35,12 +35,21 @@
       ]
     },
     {
-      "name": "redis",
-      "image": "redis:4.0.9",
-      "portMappings": [
+      "name": "dummy-nginx2",
+      "image": "347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest",
+      "environment": [
         {
-          "hostPort": 6379,
-          "containerPort": 6379
+          "name": "Container",
+          "value": "PHP"
+        }
+      ],
+      "essential": true,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "tmp",
+          "containerPath": "/tmp/12",
+          "readOnly": true
         }
       ]
     }
