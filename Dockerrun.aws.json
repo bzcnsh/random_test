@@ -33,25 +33,6 @@
           "containerPort": 80
         }
       ]
-    },
-    {
-      "name": "dummy-nginx2",
-      "image": "347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest",
-      "environment": [
-        {
-          "name": "Container",
-          "value": "PHP"
-        }
-      ],
-      "essential": true,
-      "memory": 128,
-      "mountPoints": [
-        {
-          "sourceVolume": "tmp",
-          "containerPath": "/tmp/12",
-          "readOnly": true
-        }
-      ]
     }
   ]
 }
