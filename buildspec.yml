@@ -27,6 +27,7 @@ phases:
       - cat ~/.docker/config.json
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
       - zip codebuild01.zip -r env.txt build_id.txt .ebextensions Dockerrun.aws.json
-artifacts:
-    files:
-      - codebuild01.zip
+      - aws s3 cp codebuild01.zip s3://bs01-test/codebuild01.zip/codebuild01.zip
+#artifacts:
+#    files:
+#      - codebuild01.zip
