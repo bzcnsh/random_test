@@ -34,4 +34,8 @@ phases:
 
 artifacts:
     files:
-      - codebuild01.zip
+      - env.txt
+      - build_time.txt
+      - Dockerrun.aws.json
+      - .ebextensions/*
+      
