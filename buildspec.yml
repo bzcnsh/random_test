@@ -9,10 +9,12 @@ version: 0.1
 # IMAGE_REPO_NAME - Name of the image repo (e.g. my-app)
 # IMAGE_TAG       - Tag for the image      (e.g. latest)
 # AWS_ACCOUNT_ID  - Remote AWS account id  (e.g. 555555555555)
+# export PATH=~/.local/bin:$PATH 
 
 phases:
   pre_build:
     commands:
+#      - eb --version || pip install awsebcli --upgrade --user
       - cat /etc/*release*
       - apt-get install zip -y
       - env > env.txt
@@ -28,8 +30,8 @@ phases:
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
       - zip codebuild01.zip -r env.txt build_time.txt .ebextensions Dockerrun.aws.json
       - aws s3 cp codebuild01.zip s3://bs01-test/codebuild01.zip/codebuild01.zip
-      - aws elasticbeanstalk update-application-version --application-name eb01 --version-label $(cat build_time.txt) --cli-input-json "{\"SourceBundle\":{\"S3Bucket\":\"bs01-test\",\"S3Key\":\"codebuild01.zip/codebuild01.zip\"}}"
+#      - aws elasticbeanstalk update-application-version --application-name eb01 --version-label $(cat build_time.txt) --cli-input-json "{\"SourceBundle\":{\"S3Bucket\":\"bs01-test\",\"S3Key\":\"codebuild01.zip/codebuild01.zip\"}}"
 
-#artifacts:
-#    files:
-#      - codebuild01.zip
+artifacts:
+    files:
+      - codebuild01.zip
