@@ -15,8 +15,8 @@ phases:
     commands:
       - cat /etc/*release*
       - apt-get install zip -y
-      - echo $CODEBUILD_BUILD_ID | sed 's/:/=/' > build_id.txt
       - env > env.txt
+      - date +"%Y%m%d-%H%M%S" > build_time.txt
   build:
     commands:
       - docker build -t codebuild01 .
@@ -26,8 +26,10 @@ phases:
       - eval $(aws ecr get-login --no-include-email --region us-east-1)
       - cat ~/.docker/config.json
       - docker push 347967168134.dkr.ecr.us-east-1.amazonaws.com/codebuild01:latest
-      - zip codebuild01.zip -r env.txt build_id.txt .ebextensions Dockerrun.aws.json
+      - zip codebuild01.zip -r env.txt build_time.txt .ebextensions Dockerrun.aws.json
       - aws s3 cp codebuild01.zip s3://bs01-test/codebuild01.zip/codebuild01.zip
+      - aws elasticbeanstalk update-application-version --application-name eb01 --version-label $(cat build_time.txt) --cli-input-json "{\"SourceBundle\":{\"S3Bucket\":\"bs01-test\",\"S3Key\":\"codebuild01.zip/codebuild01.zip\"}}"
+
 #artifacts:
 #    files:
 #      - codebuild01.zip
